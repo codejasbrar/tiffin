@@ -1,0 +1,113 @@
+<div class="test_product">
+  <div class="image_thumbnail">
+  <img src="" />
+  </div>
+  <div class="product_info">
+  </div>
+</div>
+<style>
+.test_product {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    align-items: center;
+}
+.single_option_1 input {
+  opacity: 0;
+  position: absolute;
+}
+.single_option_1 label {
+    border: 1px solid #000;
+    line-height: normal;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+.single_option_1 input:checked + label {
+    background-color: #000;
+    color: #fff;
+}
+.single_option_1,.single_option_2 {
+  display: flex;
+  margin:20px 0;
+  gap:10px;
+}  
+  
+/*   Mobile View post */
+  @madia (max-width:500px){
+ .test_product {
+    grid-template-columns: repeat(1,auto);
+} 
+  }  
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+var product_data = {
+  "id": 1,
+  "title": "Engravable Square Locket Clip-On Pendant",
+  "description": "This locket clip-on pendant features a rainbow moonstone at the centre and bevelled square shape with rope edge detail. It opens to fit a small photo and can be engraved on the back. Clip it on to any of our customisable chains to add the ultimate personal touch to your necklace layers.",
+  "available": false,
+  "price": 10500,
+  "variants": [
+    {
+      "id": 123,
+      "name": "Engravable Square Locket Clip-On Pendant - 18ct Gold Plated/Rainbow Moonstone",
+      "title": "18ct Gold Plated/Rainbow Moonstone",
+      "available": true,
+      "price": 10500,
+      "featured_image": "https://cdn.shopify.com/s/files/1/0280/4603/3028/products/gold-moonstone-square-locket-clip-on-pendant-necklaces-missoma-625053_41097d42-1792-42ce-8c16-085698882ab7_700x.jpg?v=1618498015",
+      "option1": "18ct Gold Plated",
+      "option2": "Rainbow Moonstone",
+      "option3": null
+    },
+    {
+      "id": 456,
+      "name": "Engravable Square Locket Clip-On Pendant - Silver Plated/Pink Pave",
+      "title": "Silver Plated/Pink Pave",
+      "available": false,
+      "price": 9500,
+      "featured_image": "https://cdn.shopify.com/s/files/1/0280/4603/3028/products/silver-moonstone-square-locket-clip-on-pendant-necklaces-missoma-932830_7a6f661f-ffa8-48cb-a5e3-e9caf285aadb_700x.jpg?v=1618498015",
+      "option1": "Silver Plated",
+      "option2": "Pink Pave",
+      "option3": null
+    },
+    {
+        "id": 789,
+        "name": "Engravable Square Locket Clip-On Pendant - 18ct Gold Plated/Amazonite",
+        "title": "18ct Gold Plated/Amazonite",
+        "available": true,
+        "price": 10100,
+        "featured_image": "https://cdn.shopify.com/s/files/1/0280/4603/3028/products/gold-moonstone-square-locket-clip-on-pendant-necklaces-missoma-158039_96aa87ab-ed42-49c6-86c0-e85432c82f13_1600x.jpg?v=1618498015",
+        "option1": "18ct Gold Plated",
+        "option2": "Amazonite",
+        "option3": null
+      }
+  ]
+};
+    
+    
+    var main = '', option1='',option2 ='';
+  $('.image_thumbnail img').attr('src',product_data.variants[0].featured_image);
+    $.each(product_data.variants,function(key,data){
+      option1 +='<input type="radio" data-varaint_id="'+data.id+'" class="single_option single_option-'+data.id+'" name="option_1" value="'+data.id+'" id="option1_'+key+'"><label for="option1_'+key+'">'+data.option1+'</label>';
+      option2 +='<input type="radio" class="single_option single_option-'+data.id+'" data-varaint_id="'+data.id+'" name="option_2" value="'+data.id+'" id="option2_'+key+'"><label for="option2_'+key+'">'+data.option2+'</label>';
+    });
+    main += "<div class='price_with_title'><h2>"+product_data.title+"</h2> <span>"+product_data.price+"</span></div>";
+    main +='<div class="single_option_1">'+option1+'</div>';
+    main +='<div class="single_option_2">'+option2+'</div>';
+    main +='<button type="button" class="addtocart" name="addtocart">add to cart</button>';
+    main += "<p>"+product_data.description+"</p>";
+    $('.product_info').html(main);
+    
+    $(document).on('click','.addtocart',function(){
+      var option1 = $(this).parents('.product_info').find('input[name="option_1"]:checked').data('varaint_id');
+      var option2 = $(this).parents('.product_info').find('input[name="option_2"]:checked').data('varaint_id');
+      if(option1 == option2){
+        console.log(option1);
+      }
+
+    });
+  });
+</script>
