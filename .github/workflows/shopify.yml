@@ -1,6 +1,10 @@
 name: Deploy Shopify Theme
 
-on: [push]
+on:
+  push:
+    branches:
+      - DEMO
+      - master
 jobs:
   shopify:
     name: Shopify
