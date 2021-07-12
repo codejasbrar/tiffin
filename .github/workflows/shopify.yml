@@ -14,4 +14,3 @@ jobs:
           SHOPIFY_STORE_URL: jas-missoma-test.myshopify.com
           SHOPIFY_THEME_ID: 124475113648
           THEME_PATH: ./
-          
