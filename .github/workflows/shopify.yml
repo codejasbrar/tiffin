@@ -1,0 +1,16 @@
+name: Deploy Shopify Theme
+
+on: [push]
+jobs:
+  shopify:
+    name: Shopify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Shopify
+        uses: pgrimaud/action-shopify@master
+        env:
+          SHOPIFY_PASSWORD: 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
+          SHOPIFY_STORE_URL: jas-missoma-test.myshopify.com
+          SHOPIFY_THEME_ID: 124475113648
+          THEME_PATH: ./
