@@ -13,4 +13,5 @@ jobs:
           SHOPIFY_PASSWORD: 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
           SHOPIFY_STORE_URL: jas-missoma-test.myshopify.com
           SHOPIFY_THEME_ID: 124475048112
+          THEME_PATH: ./
           
