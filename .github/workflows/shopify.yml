@@ -3,7 +3,8 @@ name: Deploy Shopify Theme
 on:
   push:
     branches:
-      - master
+      - '*'
+      - '!master'
 jobs:
   shopify:
     name: Shopify
